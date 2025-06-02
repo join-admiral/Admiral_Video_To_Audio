@@ -1,0 +1,13 @@
+services:
+  - type: worker
+    name: audio-to-mp3-worker
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
+    envVars:
+      - key: AWS_ACCESS_KEY_ID
+        value: YOUR_ACCESS_KEY_ID
+      - key: AWS_SECRET_ACCESS_KEY
+        value: YOUR_SECRET_ACCESS_KEY
+      - key: AWS_DEFAULT_REGION
+        value: us-east-2

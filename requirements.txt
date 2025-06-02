@@ -1,0 +1,4 @@
+boto3
+ffmpeg-python
+python-dotenv
+botocore
