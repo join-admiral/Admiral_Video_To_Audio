@@ -1,5 +1,9 @@
+import boto3
 import os
+import time
+import subprocess
 from dotenv import load_dotenv
+
 load_dotenv()
 
 s3 = boto3.client("s3")
