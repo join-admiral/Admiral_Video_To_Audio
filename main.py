@@ -51,9 +51,17 @@ def convert_to_mp3(video_path):
 
 def upload_audio(audio_path):
     filename = os.path.basename(audio_path)
-    s3_key = f"{audio_prefix}{filename}"
-    s3.upload_file(audio_path, bucket_name, s3_key)
-    print(f"🚀 Uploaded to S3: {s3_key}")
+    
+    # Upload to primary audio folder
+    audio_key = f"{audio_prefix}{filename}"
+    s3.upload_file(audio_path, bucket_name, audio_key)
+    print(f"🚀 Uploaded to S3: {audio_key}")
+    
+    # Upload to backup folder
+    backup_key = f"08.Audio Backup/{filename}"
+    s3.upload_file(audio_path, bucket_name, backup_key)
+    print(f"📦 Backup uploaded to S3: {backup_key}")
+
 
 # ---- 4) MONITOR LOOP ----
 
