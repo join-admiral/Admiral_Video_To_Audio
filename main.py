@@ -51,6 +51,11 @@ def detect_format(file_path):
         return None
 
 def validate_video(file_path):
+    size = os.path.getsize(file_path)
+    if size == 0:
+        print("❌ Downloaded file is empty. Skipping.")
+        return False
+
     fmt = detect_format(file_path)
     if fmt:
         print(f"✅ Detected video format: {fmt}")
